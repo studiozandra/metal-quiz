@@ -1,196 +1,200 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	
-	<title>What Metal Band Are You? Quiz</title>
-	
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
 
-
+    <title>Document</title>
 </head>
-
 <body>
+    <div id="page-wrap">
+        <input type="hidden" id="questionNumber" value="<?php echo $QuestionNo; ?>">
+        <input type="hidden" id="arrayLen" value="<?php echo sizeof($Questions); ?>">
 
-	<div id="page-wrap">
+        <?php 
 
-		<h1 class="transparent index-headline">Lockedown Design: What Metal Band Are You?</h1>
-		
-		<form action="grade.php" method="post" id="quiz">
-		
-		<?php
-		/**
-	         * Each <li> holds a question. Follow the same pattern if you want to add more questions.
-	         * If you add more questions, be sure to add more $answer variables in grade.php 
-	         * (See lines 26-30 in grade.php).
-	         * The important values here: name value on the rasio buttons for each answer, .fwrd class on labels.
-	         * You need the name value to store answers for grading.
-	         * In this demo, the frwd class controls question advancement through jQuery.
-	         */
-            ?>    
-            <ul id="test-questions">
-                
-                <li>
-                    <div class="quiz-overlay"></div>
-                    <h3>What do you enjoy watching on TV?</h3>
-                    
-                    <div class="mtm">
-                        <input type="radio" name="question-1-answers" id="question-1-answers-A" value="A" />
-                        <label for="question-1-answers-A" class="fwrd labela">a.  Science Fiction movies</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-1-answers" id="question-1-answers-B" value="B" />
-                        <label for="question-1-answers-B" class="fwrd labelb">b.  CNN and MSNBC</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-1-answers" id="question-1-answers-C" value="C" />
-                        <label for="question-1-answers-C" class="fwrd labelc">c.  History Channel</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-1-answers" id="question-1-answers-D" value="D" />
-                        <label for="question-1-answers-D" class="fwrd labeld">d.  Fantasy movies, like <em>Lord of the Rings</em></label>
-                    </div>
-                    <p class="quiz-progress">1 of 5</p>
-                </li>
-                
-                <li>
-                    <div class="quiz-overlay"></div>
-                    <h3>What&#8217;s your preferred method of travel?</h3>
-                    
-                    <div class="mtm">
-                        <input type="radio" name="question-2-answers" id="question-2-answers-A" value="A" />
-                        <label for="question-2-answers-A" class="fwrd labela">a.  Riding a Harley Davidson</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-2-answers" id="question-2-answers-B" value="B" />
-                        <label for="question-2-answers-B" class="fwrd labelb">b.  Offroading in a 4 by 4</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-2-answers" id="question-2-answers-C" value="C" />
-                        <label for="question-2-answers-C" class="fwrd labelc">c.  Piloting my own plane</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-2-answers" id="question-2-answers-D" value="D" />
-                        <label for="question-2-answers-D" class="fwrd labeld">d.  Riding a horse across the countryside</label>
-                    </div>
-                    <p class="quiz-progress">2 of 5</p>
-                </li>
-                
-                <li>
-                    <div class="quiz-overlay"></div>
-                    <h3>What&#8217;s your favorite piece of clothing that you wear?</h3>
-                    
-                    <div class="mtm">
-                        <input type="radio" name="question-3-answers" id="question-3-answers-A" value="A" />
-                        <label for="question-3-answers-A" class="fwrd labela">a.  My leather jacket</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-3-answers" id="question-3-answers-B" value="B" />
-                        <label for="question-3-answers-B" class="fwrd labelb">b.  A dress shirt or nice pair of jeans</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-3-answers" id="question-3-answers-C" value="C" />
-                        <label for="question-3-answers-C" class="fwrd labelc">c.  My favorite concert T shirt</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-3-answers" id="question-3-answers-D" value="D" />
-                        <label for="question-3-answers-D" class="fwrd labeld">d.  Custom handmade clothing by a local artisan</label>
-                    </div>
-                    <p class="quiz-progress">3 of 5</p>
-                </li>
-                
-                <li>
-                    <div class="quiz-overlay"></div>
-                    <h3>Out of these, what is your favorite type of music?</h3>
-                    
-                    <div class="mtm">
-                        <input type="radio" name="question-4-answers" id="question-4-answers-A" value="A" />
-                        <label for="question-4-answers-A" class="fwrd labela">a.  Softer rock, like Fleetwood Mac or folk music</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-4-answers" id="question-4-answers-B" value="B" />
-                        <label for="question-4-answers-B" class="fwrd labelb">b.  Punk rock, like the Sex Pistols</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-4-answers" id="question-4-answers-C" value="C" />
-                        <label for="question-4-answers-C" class="fwrd labelc">c.  70s hard rock and arena rock</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-4-answers" id="question-4-answers-D" value="D" />
-                        <label for="question-4-answers-D" class="fwrd labeld">d.  Classical music from the masters</label>
-                    </div>
-                    <p class="quiz-progress">4 of 5</p>
-                </li>
-                
-                <li>
-                    <div class="quiz-overlay"></div>
-                    <h3>If you could meet anyone from history, who would you choose?</h3>
-                    
-                    <div class="mtm">
-                        <input type="radio" name="question-5-answers" id="question-5-answers-A" value="A" />
-                        <label for="question-5-answers-A" class="fwrd labela">a.  Someone mythic, like Nostradamus or Rasputin</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-5-answers" id="question-5-answers-B" value="B" />
-                        <label for="question-5-answers-B" class="fwrd labelb">b.  A famous writer, like John Steinbeck</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-5-answers" id="question-5-answers-C" value="C" />
-                        <label for="question-5-answers-C" class="fwrd labelc">c.  A famous conquerer, like Alexander the Great</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-5-answers" id="question-5-answers-D" value="D" />
-                        <label for="question-5-answers-D" class="fwrd labeld">d.  One of the Egyptian Pharaoahs</label>
-                    </div>
-                    <p class="quiz-progress">5 of 5</p>
-                </li>
+        $Questions = array(
+            1 => array(
+                'Question' => 'CSS stands for',
+                'Answers' => array(
+                    'A' => 'Computer Styled Sections',
+                    'B' => 'Cascading Style Sheets',
+                    'C' => 'Crazy Solid Shapes'
+                ),
+                'CorrectAnswer' => 'B'
+            ),
+            2 => array(
+                'Question' => 'Second question',
+                'Answers' => array(
+                    'A' => 'First answer of Second question',
+                    'B' => 'Second answer Second question',
+                    'C' => 'Hint: this is the right answer'
+                ),
+                'CorrectAnswer' => 'C'
+            ),
+            3 => array(
+                'Question' => 'Internet Explorer 6 was released in...',
+                'Answers' => array(
+                    'A' => '2001',
+                    'B' => '1998',
+                    'C' => '2006'
+                ),
+                'CorrectAnswer' => 'A'
+            ),
+            4 => array(
+                'Question' => 'SEO Stand for...',
+                'Answers' => array(
+                    'A' => 'Secret Enterprise Organizations',
+                    'B' => 'Special Endowment Opportunity',
+                    'C' => 'Search Engine Optimization'
+                ),
+                'CorrectAnswer' => 'C'
+            ),
+            5 => array(
+                'Question' => 'A 404 Error...',
+                'Answers' => array(
+                    'A' => 'does not impact web analytics',
+                    'B' => 'is an HTTP Status Code meaning Page Not Found',
+                    'C' => 'is a deprecated error code in HTML5'
+                ),
+                'CorrectAnswer' => 'B'
+            )
+        );
 
-                <li>
-                    <div class="quiz-overlay"></div>
-                    <h3 class="anticipate">Now it&#8217;s time to see your results...</h3>
-                    <input type="submit" value="Submit Quiz" id="submit-quiz" />
-                </li>
-            </ul>
-		
-		</form>
-            <div class="nomargin">
-	           <div class="share lb"><a href="http://www.facebook.com/sharer.php?u=http://www.metalquiz.sacramentowebdesigns.com/&amp;p%5bsummary%5d=What%20Metal%20Band%20Are%20You?%20Quiz%20Take%20this%20quiz%20to%20find%20out." title="Share on Facebook" target="_blank"><img src="../imgs/fb.png" alt="Share this on Facebook" /></a></div>
-               <div class="share rb"><a href="http://twitter.com/home/?status=What%20Metal%20Band%20Are%20You?%20Quiz%20Take%20this%20quiz%20to%20find%20out.%20(http://www.metalquiz.sacramentowebdesigns.com)%20+via+@Lockedown_" title="Share on Twitter" target="_blank"><img src="../imgs/tw.png" alt="Share this on Twitter" /></a></div>
-               <p class="shareprompt">Share This Quiz</p>
-               <p class="designby shadow1"><span>Built by </span><a href="https://www.lockedowndesign.com"><img src="../imgs/ld.png" alt="Micro Website by Lockedown Design" /></a></p>
-            </div>
-    </div>
+        if (isset($_POST['answers'])){
+            $Answers = $_POST['answers']; // Get submitted answers.
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-	<?php
-	/**
-         * This quiz uses jQuery to move the questions up each time you click an answer.
-         * You can change the layout of the quiz, but you may need to adjust the $mt variable.
-         * The $mt variable is the margin-top of the quiz.
-         * This gives the illusion of each question being on a separate page.
-         * It is actually one page, just this element moves.
-         * Quiz-takers need to get to the end and hit the Submt button to see results.
-         * The answers get stored and sent to grade.php for evaluation.
-         * 
-         */
+            // Now this is fun, automated question checking! ;)
+
+            foreach ($Questions as $QuestionNo => $Value){
+                // Echo the question
+                echo $Value['Question'].'<br />';
+
+                if ($Answers[$QuestionNo] != $Value['CorrectAnswer']){
+                    echo 'You answered: <span style="color: red;">'.$Value['Answers'][$Answers[$QuestionNo]].'</span><br>'; // Replace style with a class
+                    echo 'Correct answer: <span style="color: green;">'.$Value['Answers'][$Value['CorrectAnswer']].'</span>';
+                } else {
+                    echo 'Correct answer: <span style="color: green;">'.$Value['Answers'][$Answers[$QuestionNo]].'</span><br>'; // Replace style with a class
+                    echo 'You are correct: <span style="color: green;">'.$Value['Answers'][$Answers[$QuestionNo]].'</span>'; $counter++;
+
+                }
+
+                echo '<br /><hr>'; 
+                                        if ($counter=="") 
+                                        { 
+                                        $counter='0';
+                                        $results = "Your score: $counter/5"; 
+                                        }
+                                        else 
+                                        { 
+                                        $results = "Your score: $counter/5"; 
+                                        }
+                    }                           echo $results;
+        } else {
         ?>
+        <form action=<?php echo $_SERVER['PHP_SELF']; ?> method="post" id="quiz">
+        <ul id="test-questions">
+            <?php foreach ($Questions as $QuestionNo => $Value){ ?>
+            <li>
+                <div class="quiz-overlay"></div>
+                
+                <div class="szlider">
+                    <div class="pBar"></div>
+                    <div class="progressBar"></div>
+                    
+                </div>
+
+                <h3><?php echo $Value['Question']; ?></h3>
+
+                <div class="mtm">
+                <?php 
+                    foreach ($Value['Answers'] as $Letter => $Answer){ 
+                    $Label = 'question-'.$QuestionNo.'-answers-'.$Letter;
+                    if ($Letter != $Value['CorrectAnswer']){
+                        $Class = 'fwrdn label'.strtolower($Letter);
+                    }else{
+                        $Class = 'fwrd label'.strtolower($Letter);
+                    }
+                    
+                ?>
+                <div>
+                    <input type="radio" name="answers[<?php echo $QuestionNo; ?>]" id="<?php echo $Label; ?>" value="<?php echo $Letter; ?>" />
+                    <label class="<?php echo $Class; ?>" for="<?php echo $Label; ?>"><?php echo $Letter; ?>) <?php echo $Answer; ?> </label>
+                </div>
+                <?php } ?>
+                    </div></li>
+            <?php } ?>
+            <li>
+                <div class="quiz-overlay"></div>
+                <h3 class="anticipate">Now it&#8217;s time to see your results...</h3>
+                <input type="submit" value="Submit Quiz" id="submit-quiz" />
+            </li>
+
+        </ul>
+        <input type="submit" value="Submit Quiz" />
+        </form>
+        <?php 
+        }
+        ?>
+
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+    <script>
+        // sliderz progress bar
+        var hiddenInputLen = document.getElementById('arrayLen');
+        var arrLength = 5;
+        // var arrLength = hiddenInputLen.value;
+        var hiddenInputQno = document.getElementById('questionNumber');
+        var arrQuestNo = 0;
+        // var arrQuestNo = hiddenInputQno.value; 
+        
+        function drawszlider(totalQuestions, currentQuestion){
+            var progressBar = Math.round((currentQuestion * 100) / (totalQuestions));
+            var i = 0;
+            for (i = 0; i < arrLength; i++) {
+                if(arrQuestNo === 0){
+                    document.getElementsByClassName("pBar")[i].style.width = 1 + '%';
+                    document.getElementsByClassName("progressBar")[i].innerHTML= '0%';
+                }else{
+                    document.getElementsByClassName("pBar")[i].style.width = progressBar + '%';
+                    document.getElementsByClassName("progressBar")[i].innerHTML = progressBar + '%';
+
+                }
+
+            };
+            arrQuestNo += 1;
+
+        }
+        drawszlider(arrLength, arrQuestNo); 
+
+        // no fwrd clicks
+        var fwrdn = document.querySelectorAll('.fwrdn');
+        
+        var i = 0;
+        for (var i = 0; i < fwrdn.length; i++) {
+            fwrdn[i].addEventListener('click', function (event) {
+                var clicked = false;
+                event.preventDefault();
+                if(clicked === false){
+                    this.style.backgroundColor = "red"; 
+                    this.style.textDecorationLine = "line-through";
+                    clicked = true;
+                    console.log('the wrong answer = ' + event.target.value + ' ' + event.target.label);
+                    
+                }else if(clicked === true){
+                    this.style.backgroundColor = "#1f4c5b"; 
+                    this.style.textDecorationLine = "none";
+                    clicked = false;
+                }
+
+            });
+        }
+
+
+    </script>
     <script>
            (function($) {
               var timeout= null;
@@ -201,17 +205,11 @@
                     $mt = $mt - 430;
                     $("#test-questions").css("margin-top", $mt); 
                 }, 333);
+                
+                drawszlider(arrLength, arrQuestNo);
               });
            }(jQuery))
     </script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-00000000-1', 'auto');
-  ga('send', 'pageview');
-</script>
 </body>
 </html>

@@ -179,6 +179,7 @@ h1 {
   width: 552px;
   z-index: -1;
 }
+
 .index .quiz-overlay, .quiz-overlay { 
   background: rgba(226,255,246,.52) url(../imgs/horns-up.png); 
   background-size: cover;
@@ -192,8 +193,8 @@ h1 {
   margin-top: 0;
 }
 #quiz h3 {
-  color: #222;
-  font-size: 22px; /* 18*/
+  color: #fff;
+  font-size: 2rem; /* 18*/
   font-weight: 400;
   line-height: 32px; 
   margin: 0 0 1px 0;
@@ -236,6 +237,35 @@ h1 {
   padding: 2px 0 4px 16px;
   width: 476px;
 }
+
+.szlider{
+  width:552px;
+  height:15px;
+  margin: 0% !important;
+  padding: 0% !important;
+  border:1px solid #000;
+  overflow:hidden; }
+.pBar{
+  width:1%;
+  height:15px;
+  margin: 0% !important;
+  padding: 0% !important;
+  background: #d65946; }
+
+  .progressBar {
+
+    color: #eee4e4 !important;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+    left: 25px !important;
+    position: relative;
+    top: -26px !important;
+    height: 12px;
+
+}
+
+
 #quiz h3.showmyscore {
 
 }
@@ -361,16 +391,5 @@ textarea.c-p {
 .result {
   height: 325px;
 }
-.priest {
-  background: url(../imgs/priest-bg.jpg) no-repeat;
-}
-.megadeth {
-  background: url(../imgs/megadeth-bg.jpg) no-repeat;
-}
-.maiden {
-  background: url(../imgs/maiden-bg.jpg) no-repeat;
-}
-.dio {
-  background: url(../imgs/dio-bg.jpg) no-repeat;
-}
+
 /* ------ \m/ ------ */
