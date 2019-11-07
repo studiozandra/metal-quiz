@@ -225,7 +225,7 @@ h1 {
 #quiz input {
   /*opacity: 0;*/
   vertical-align: middle;
-  /*width: 20px;*/
+  width: auto;
 }
 #quiz label, #quiz input#submit-quiz {
   background-color: #1f4c5b; 
@@ -288,7 +288,7 @@ h1 {
   font-family: 'Droid Serif', Times, serif;
   font-size: 21px;
   height: 74px;
-  margin: 43px auto 0;
+  margin: 43px auto 0; /*margin: 3rem 3rem 1rem;*/
   opacity: 1;
   width: 250px;
 }

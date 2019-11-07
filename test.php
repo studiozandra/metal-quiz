@@ -113,22 +113,21 @@
         margin: 25px 1px 95px -11px;}
     
     .result-page{
-        height: 450px;
-        margin: 0 auto;
+        margin: 0 0 0 0;
         position: relative;
         width: 360px;
         overflow: visible;
+
+        #page-wrap{overflow: visible;}
     }
+
+    
     
 
     
     
     }
 
-    
-
-
-
 
     }
 
@@ -136,12 +135,7 @@
 
 
 
-}
-
-
-
-		
-		
+}	
 	</style>
 </head>
 <body>
@@ -247,12 +241,12 @@
           }
           //End of validation 
 
-          $output = "First Name: " . $firstname . PHP_EOL . "Last Name:" . $lastname .  PHP_EOL . "Email: " . $email . PHP_EOL . "Member number:" . $member . "".PHP_EOL;
+          $output = "First Name: " . $firstname . PHP_EOL . "Last Name: " . $lastname .  PHP_EOL . "Email: " . $email . PHP_EOL . "Member number: " . $member . "".PHP_EOL;
 
          
   //Print Errors
   if (isset($_REQUEST['submitted'])) {
-      echo '<section class="result-page"';
+      echo '<section class="result-page">';
   // Print any error messages. 
   if (!empty($errors)) { 
   echo '<hr /><h3>The following occurred:</h3><ul>'; 
@@ -260,8 +254,8 @@
   foreach ($errors as $msg) { echo '<li>'. $msg . '</li>';}
   echo '</ul><h3>Your form could not be sent due to input errors.</h3><hr />';}
    else{echo '<hr /><h3 align="center">Your review was sent. Thank you!</h3><hr /><p>2020 Member Review Results
-    Here are the results of your member review. Your score has been reported to the office. If you have answered all questions correctly, you have completed this portion of the renewal process. If you answered any questions incorrectly, click here to retake the review. Click here to return to your account.</p>'; 
-  echo $output;
+    Here are the results of your member review. Your score has been reported to the office. If you have answered all questions correctly, you have completed this portion of the renewal process. If you answered any questions incorrectly, click <a href="memberreview.php">here</a> to retake the review. Click <a href="../accounts/myaccount.aspx">here</a> to return to your account.</p>'; 
+  echo $output .'<br />';
   foreach ($Questions as $QuestionNo => $Value){
     // Echo the question
     echo $Value['Question'].'<br />';
@@ -332,15 +326,18 @@
                 <?php 
                     foreach ($Value['Answers'] as $Letter => $Answer){ 
                     $Label = 'question-'.$QuestionNo.'-answers-'.$Letter;
+                    $RadioClass = "";
                     if ($Letter != $Value['CorrectAnswer']){
                         $Class = 'fwrdn label'.strtolower($Letter);
+                        $RadioClass = 'fwrdn';
                     }else{
                         $Class = 'fwrd label'.strtolower($Letter);
+                        $RadioClass = 'fwrd';
                     }
                     
                 ?>
                 <div>
-                    <input type="radio" name="answers[<?php echo $QuestionNo; ?>]" id="<?php echo $Label; ?>" value="<?php echo $Letter; ?>" />
+                    <input type="radio" name="answers[<?php echo $QuestionNo; ?>]" id="<?php echo $Label; ?>" class="<?php echo $RadioClass; ?>" value="<?php echo $Letter; ?>" />
                     <label class="<?php echo $Class; ?>" for="<?php echo $Label; ?>"><?php echo $Letter; ?>) <?php echo $Answer; ?> </label>
                 </div>
                 <?php } ?>
