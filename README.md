@@ -1,13 +1,17 @@
-metal-quiz
+member-quiz
 ==========
 
-Simple PHP Quiz Tutorial
+Simple PHP Quiz 
 
-This is the source code for the PHP Quiz tutorial found at https://www.lockedownseo.com/build-a-quiz-in-php-tutorial .
+This was based on John Locke's PHP Quiz tutorial found at https://www.lockedownseo.com/build-a-quiz-in-php-tutorial . Chris Coyier and CSS-Tricks supplied the initial blueprint: http://css-tricks.com/building-a-simple-quiz/
 
-In this example, the user answers five multiple choice questions that determine What Metal Band they most resemble. Each possible outcome starts with a score of zero, and corresponding answers add to the score. Whichever outcome has the highest score at the end is shown.
+In this revamp, the user answers various multiple choice questions to reinforce their knowledge of club membership rules. It is not possible to submit incorrect answers, so this is a quiz in name only, merely for reminding members of the rules. At the end of the questions, members must enter their information and after submitting the form, a "submitted" page is displayed.
 
-Much thanks to Chris Coyier and CSS-Tricks for giving me the initial blueprint: http://css-tricks.com/building-a-simple-quiz/
+Notes: 
+- test.php is one long HTML page. 
+Each time a question is answered, JavaScript subtracts from the height of the page but the position remains absolute, in a way that the entire page is not visible all at once. 
+- The page is populated with list items generated using loops in PHP. The answers are processed using PHP and a submission will create a .txt file containing the user's submitted info and quiz results. All subsequent submissions will append to this file.
+- This is not a serious quiz, and any user who knows JS would be able to look at the code in a browser and determine the correct answers (the correct answer has a slightly different class name than the others).
 
 Things You Can Do With This:
 ---------------------------------------------
