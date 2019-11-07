@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
-    <!-- <script src="mrgrading.js"></script> -->
+    <script src="mrgrading.js"></script>
 
     <title>2020 Member Review</title>
 
@@ -63,7 +63,7 @@
 }
         
     @media screen and (max-width: 360px) {
-        div { 
+    div { 
         width: 15em;
         padding: .1em;
         }
@@ -77,6 +77,9 @@
         padding: .1em;
         text-align: left;
         }
+
+    #quiz {margin: 0 0px;}
+
     .quiz-overlay{
         width: 25em;
         
@@ -117,16 +120,14 @@
         overflow: visible;
     }
     
-        #page-wrap {
-            height: 450px;
-            margin: 0 auto;
-            overflow: hidden;
-            position: relative;
-            width: 360px;
-            }
+
     
     
     }
+
+    
+
+
 
 
     }
@@ -403,7 +404,7 @@
         // var arrQuestNo = hiddenInputQno.value; 
         
         function drawszlider(totalQuestions, currentQuestion){
-            var progressBar = Math.round((currentQuestion * 100) / (totalQuestions +2));
+            var progressBar = Math.round(((currentQuestion-1) * 100) / (totalQuestions +2));
             var i = 0;
             for (i = 0; i < arrLength; i++) {
                 if(arrQuestNo === 0){
