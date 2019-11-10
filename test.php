@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
-    <script src="mrgrading.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
 
     <title>2020 Member Review</title>
 
@@ -26,13 +26,7 @@
 .close-button:hover {
    background-color: darkgray;
 }
-
-.show-modal {
-   opacity: 1;
-   visibility: visible;
-   transform: scale(1.0);
-   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-}	
+	
 
 .popup{
   position: fixed;
@@ -41,7 +35,6 @@
    width: 100%;
    height: 100%;
    background-color: rgba(0, 0, 0, 0.5);
-   
    visibility: hidden;
    transform: scale(1.1);
    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
@@ -106,7 +99,7 @@
 
     .submit-quiz {
         display: block;
-        margin: 36px auto 0;
+        margin: 13px auto 0;
     }
 
     .quiz ul, li{
@@ -121,7 +114,10 @@
         #page-wrap{overflow: visible;}
     }
 
-    
+    #quiz input#submit-quiz {
+        margin: 3rem 3rem 1rem;
+  
+    }
     
 
     
@@ -145,6 +141,7 @@
         <input type="hidden" id="arrayLen" value="<?php echo sizeof($Questions); ?>">
 
         <?php 
+
 
         $Questions = array(
             1 => array(
@@ -175,7 +172,7 @@
                 'CorrectAnswer' => 'A'
             ),
             4 => array(
-                'Question' => 'SEO Stand for...',
+                'Question' => 'SEO Stands for...',
                 'Answers' => array(
                     'A' => 'Secret Enterprise Organizations',
                     'B' => 'Special Endowment Opportunity',
@@ -197,9 +194,9 @@
         if (isset($_POST['answers'])){
             $Answers = $_POST['answers']; // Get submitted answers.
             $counter = 0;
-            $results = "";
+            $results = "Your Score: ";
 
-            // Now this is fun, automated question checking! ;)
+            // Now this is fun, automated question checking! 
 
                                     
                      
@@ -252,10 +249,12 @@
   echo '<hr /><h3>The following occurred:</h3><ul>'; 
   // Print each error. 
   foreach ($errors as $msg) { echo '<li>'. $msg . '</li>';}
-  echo '</ul><h3>Your form could not be sent due to input errors.</h3><hr />';}
-   else{echo '<hr /><h3 align="center">Your review was sent. Thank you!</h3><hr /><p>2020 Member Review Results
-    Here are the results of your member review. Your score has been reported to the office. If you have answered all questions correctly, you have completed this portion of the renewal process. If you answered any questions incorrectly, click <a href="memberreview.php">here</a> to retake the review. Click <a href="../accounts/myaccount.aspx">here</a> to return to your account.</p>'; 
-  echo $output .'<br />';
+  echo '</ul><h3>Your form could not be sent due to input errors.</h3><hr />';
+} else {
+    echo '<hr /><h3 align="center">Your review was sent. Thank you!</h3><hr /><p>2020 Member Review Results
+    Here are the results of your member review. Your score has been reported to the office. If you have answered all questions correctly, you have completed this portion of the renewal process. If you answered any questions incorrectly, click <a href="2020_member_review.php">here</a> to retake the review. Click <a href="../accounts/myaccount.aspx">here</a> to return to your account.</p>'; 
+  echo $output . '<br />';
+
   foreach ($Questions as $QuestionNo => $Value){
     // Echo the question
     echo $Value['Question'].'<br />';
@@ -265,23 +264,24 @@
         echo 'Correct answer: <p style="color: green;">'.$Value['Answers'][$Value['CorrectAnswer']].'</p>';
     } else {
         echo 'Correct answer: <p style="color: green;">'.$Value['Answers'][$Answers[$QuestionNo]].'</p>'; // Replace style with a class
-        echo 'You are correct: <p style="color: green;">'.$Value['Answers'][$Answers[$QuestionNo]].'</p>'; $counter++;
+        echo 'You are correct: <p style="color: green;">'.$Value['Answers'][$Answers[$QuestionNo]].'</p>'; 
+        $counter++;
+        
 
     }
-
+    echo $counter;
+  }
     echo '<br /><hr>'; 
-                            if ($counter=="") 
-                            { 
-                            $counter='0';
-                            $results = "Your score: $counter/5"; 
-                            }
-                            else 
-                            { 
-                            $results = "Your score: $counter/5"; 
-                            }
-        }   
-
+    if ($counter == 0){ 
+        // $counter = '0';
+        $results = "Your score: $counter/5"; 
+    } else { 
+        $results = "Your score: $counter/5"; 
     }
+    
+    echo $results;
+
+}
     echo '</section>';
   
   } 
@@ -291,7 +291,9 @@
      //open file for output
      $fp = fopen("contacts.txt","a");
      //write to the file
-     fwrite($fp, $output . $results .PHP_EOL . ", ");
+     $date=new DateTime(); //this returns the current date time
+     $DT = $date->format('Y-m-d-H-i-s');
+      fwrite($fp, $DT . $output . $results .PHP_EOL . ", ");
      fclose($fp);
     }
   }
@@ -302,12 +304,13 @@
         } else {
         ?>
         <form action=<?php echo $_SERVER['PHP_SELF']; ?> method="post" id="quiz">
+        <!-- <form action="processing.php" method="post" id="quiz"> -->
         <ul id="test-questions">
         <li>
                 <div class="quiz-overlay"></div>
                 <h3 class="anticipate">You must achieve a score of 100% to pass this review. The answers to this review can all be found in your 2020 Member Handbook. At the end, you will be asked to enter your name and Member Number.</h3>
                 
-    <input type="button" value="Start Quiz" class="fwrd" />
+    <input type="button" value="Start Quiz" class="advance" />
             </li>
 
             <?php foreach ($Questions as $QuestionNo => $Value){ ?>
@@ -347,17 +350,18 @@
             <li>
                 <div class="quiz-overlay"></div>
                 <h3 class="">Final steps:enter your Name, Email address and Member number:</h3>
-                <label class="member-info">First Name:  <input name="firstname" type="text" placeholder="- Enter First Name -"><br></label><br>  
-    <label>Last Name:   <input name="lastname" type="text" placeholder="- Enter Last Name -"><br></label><br>  
-    <label>Email:   <input name="email" type="email" placeholder="- Enter Email -"><br></label><br> 
-    <label>Member Number:   <input name="member" type="text" placeholder="- Your Member Num -"><br></label><br>
-    <input type="button" value="next page" class="fwrd" />
+                <label class="member-info">First Name:  <input name="firstname" type="text" placeholder="- Enter First Name -" required /><br></label><br>  
+    <label>Last Name:   <input name="lastname" type="text" placeholder="- Enter Last Name -" required /><br></label><br>  
+    <label>Email:   <input name="email" type="email" placeholder="- Enter Email -" required /><br></label><br> 
+    <label>Member Number:   <input name="member" type="text" placeholder="- Your Member Num -" required /><br></label><br>
+    <input type="submit" value="Submit Quiz" id="submit-quiz" name="submitted"/>
+    <!-- <input type="button" value="next page" class="advance" /> -->
             </li>
-            <li>
+            <!-- <li>
                 <div class="quiz-overlay"></div>
                 <h3 class="anticipate">Now it&#8217;s time to see your results...</h3>
                 <input type="submit" value="Submit Quiz" id="submit-quiz" name="submitted"/>
-            </li>
+            </li> -->
 
         </ul>
         <!-- <input type="submit" value="Submit Quiz" /> -->
@@ -370,7 +374,8 @@
     <div id="correctPopUp" class="popup">
 		<div class="inside">
 		
-		    <span class="close-button" onclick="document.getElementById('correctPopUp').style.visibility = 'hidden'; return false;">&times;</span>
+		    <!-- <span class="close-button" onclick="document.getElementById('correctPopUp').style.visibility = 'hidden'; return false;">&times;</span> -->
+            <span class="close-button adv">&times;</span>
 
 			<!--You are:<br/>
 			<span class="headline">Correct!</span>
@@ -401,7 +406,7 @@
         // var arrQuestNo = hiddenInputQno.value; 
         
         function drawszlider(totalQuestions, currentQuestion){
-            var progressBar = Math.round(((currentQuestion-1) * 100) / (totalQuestions +2));
+            var progressBar = Math.round((currentQuestion * 100) / (totalQuestions + 1));
             var i = 0;
             for (i = 0; i < arrLength; i++) {
                 if(arrQuestNo === 0){
@@ -426,7 +431,7 @@
         for (var i = 0; i < fwrdn.length; i++) {
             fwrdn[i].addEventListener('click', function (event) {
                 var clicked = false;
-                event.preventDefault();
+                // event.preventDefault();
                 if(clicked === false){
                     // this.style.backgroundColor = "red"; 
                     // this.style.textDecorationLine = "line-through";
@@ -442,15 +447,15 @@
 
             });
         }
+        var fwrd = document.querySelectorAll('.fwrd');
         for (var i = 0; i < fwrd.length; i++) {
             fwrd[i].addEventListener('click', function (event) {
                 var clicked = false;
-                event.preventDefault();
+                // event.preventDefault();
                 if(clicked === false){
                     document.getElementById('correctPopUp').style.visibility = 'visible';
                     clicked = true;
-                    console.log('the wrong answer = ' + event.target.value + ' ' + event.target.label);
-                    
+                    console.log('the right answer = ' + event.target.value + ' ' + event.target.label);
                 }else if(clicked === true){
                     this.style.backgroundColor = "#1f4c5b"; 
                     this.style.textDecorationLine = "none";
@@ -463,15 +468,18 @@
 
     </script>
     <script>
+    //subtract from margin top upon closure of "correct" modal
            (function($) {
               var timeout= null;
               var $mt = 0;
-              $("#quiz .fwrd").click(function(){
+              $(".advance, .adv").click(function(){
+                console.log("correct close x")
+                document.getElementById('correctPopUp').style.visibility = 'hidden';
                 clearTimeout(timeout);
                 timeout = setTimeout(function(){ 
                     $mt = $mt - 430;
                     $("#test-questions").css("margin-top", $mt); 
-                }, 555);
+                }, 333);
                 
                 drawszlider(arrLength, arrQuestNo);
               });
